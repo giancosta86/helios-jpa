@@ -1,16 +1,13 @@
 buildscript {
     repositories {
-        maven {
-            url 'https://dl.bintray.com/giancosta86/Hephaestus'
-        }
+        //TODO! Del this!
+        mavenLocal()
 
-        jcenter()
+        mavenCentral()
     }
 
     dependencies {
-        classpath 'info.gianlucacosta.moonlicense:moonlicense-gradle:5.0'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
-        classpath 'info.gianlucacosta.aurora:aurora:8.0'
+        classpath 'info.gianlucacosta.aurora:aurora:10.0.0-SNAPSHOT'
     }
 }
 
@@ -18,25 +15,18 @@ buildscript {
 apply plugin: 'scala'
 apply plugin: 'maven'
 apply plugin: 'osgi'
-apply plugin: 'com.jfrog.bintray'
-apply plugin: 'info.gianlucacosta.moonlicense'
 apply plugin: 'info.gianlucacosta.aurora'
-
 
 
 group = 'info.gianlucacosta.helios'
 archivesBaseName = 'helios-jpa'
-version = '1.0'
+version = '2.0.0-SNAPSHOT'
 
 
 description = 'Scala library of JPA utilities'
 
-ext.facebookPage = "https://www.facebook.com/Helios-206962992779275"
-
 
 dependencies {
-    generatedCompile 'org.scala-lang:scala-library:2.11.8'
-
     compile 'org.scala-lang:scala-library:2.11.8'
 
     compile 'org.hibernate:hibernate-entitymanager:5.2.3.Final'
@@ -50,27 +40,5 @@ aurora {
         name = 'Gianluca Costa'
         email = 'gianluca@gianlucacosta.info'
         url = 'http://gianlucacosta.info/'
-    }
-
-    bintray {
-        repo = 'Hephaestus'
-        licenses = ['Apache-2.0']
-        labels = [
-                'utilities',
-                'library',
-                'Scala',
-                'JPA'
-        ]
-    }
-}
-
-
-moonLicense {
-    license = apache2
-
-    productInfo {
-        productName = 'Helios - JPA'
-        inceptionYear = 2016
-        copyrightHolder = 'Gianluca Costa'
     }
 }
